@@ -1,4 +1,3 @@
-
 ## Requirements ##
 
 - java 17+
@@ -10,12 +9,12 @@ __Maven__
     <dependency>
         <groupId>org.makechtec.software</groupId>
         <artifactId>cli_arguments_reader</artifactId>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
     </dependency>
 
 __Gradle__
 
-    implementation 'org.makechtec.software:cli_arguments_reader:1.0.0'
+    implementation 'org.makechtec.software:cli_arguments_reader:1.2.0'
 
 ## Usage ##
 
@@ -45,3 +44,36 @@ And with code:
         }
     
     }
+
+## System variable reader ##
+
+## USAGE ##
+
+    var reader = new SystemVariableReader();
+
+    var keys = new HashSet<String>();
+
+    keys.add("db_name");
+
+    reader.loadArgumentKeys(keys);
+    reader.loadArguments();
+    var dbName = reader.getArgumentValue("db_name");
+
+    assertTrue(dbName.isPresent());
+    assertEquals("test", dbName.get());
+
+## Property reader ##
+
+## USAGE ##
+
+    var pathGenerator = new PathGenerator();
+    var resourcePath = pathGenerator.resourcePath(PropertyReaderTest.class, "test.properties");
+    var propertyReader = new PropertyReader(resourcePath);
+
+
+    propertyReader.loadArgumentKeys(Arrays.asList( "db_name", "db_user" ));
+
+    propertyReader.loadArguments();
+
+    assertTrue(propertyReader.getArgumentValue("db_name").isPresent());
+    assertEquals("hello", propertyReader.getArgumentValue("db_name").get());

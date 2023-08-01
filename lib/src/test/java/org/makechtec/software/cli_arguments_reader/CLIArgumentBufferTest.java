@@ -14,7 +14,7 @@ public class CLIArgumentBufferTest {
     private CLIArgumentBuffer buffer;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
 
         buffer = new CLIArgumentBuffer();
 
@@ -24,9 +24,9 @@ public class CLIArgumentBufferTest {
     }
 
     @Test
-    public void testReading(){
+    public void testReading() {
 
-        buffer.storeArguments(new String[]{ "--stored_procedure_file=procedures.properties" });
+        buffer.storeArguments(new String[]{"--stored_procedure_file=procedures.properties"});
 
         assertTrue(buffer.getArgumentValue("stored_procedure_file").isPresent());
         assertEquals("procedures.properties", buffer.getArgumentValue("stored_procedure_file").get());

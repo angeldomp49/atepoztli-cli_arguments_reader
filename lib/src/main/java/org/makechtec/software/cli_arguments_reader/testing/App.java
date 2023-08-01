@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class App {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         CLIArgumentBuffer buffer = new CLIArgumentBuffer();
 
