@@ -34,9 +34,7 @@ public class PropertyReader implements ArgumentAutoLoader {
 
         var propertyLoader = new AbsolutePathPropertyLoader(this.propertyFilename);
 
-        keys.forEach(key -> {
-            values.put(key, propertyLoader.getProperty(key));
-        });
+        keys.forEach(key -> values.put(key, propertyLoader.getProperty(key)));
 
     }
 }
