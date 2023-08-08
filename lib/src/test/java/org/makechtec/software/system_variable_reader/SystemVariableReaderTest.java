@@ -42,6 +42,8 @@ class SystemVariableReaderTest {
 
         assertFalse(dbName.isPresent());
 
+        System.out.println("hi");
+
     }
 
 }
