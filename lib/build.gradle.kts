@@ -16,6 +16,18 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("http://makechtec.online:8080/yolotli/package")
+        credentials {
+            username = System.getenv("MAKECH_USERNAME")
+            password = System.getenv("MAKECH_PASSWORD")
+        }
+        authentication {
+            create<BasicAuthentication>("basic")
+        }
+    }
 }
 
 dependencies {
@@ -24,6 +36,7 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation("com.google.guava:guava:31.1-jre")
+    implementation("org.makechtec.software:path_generator:2.0.3")
 }
 
 testing {
@@ -52,6 +65,20 @@ publishing {
             version = "2.0.0"
 
             from(components["java"])
+        }
+    }
+
+    repositories{
+        maven {
+            isAllowInsecureProtocol = true
+            url = uri("http://makechtec.online:8080/yolotli/package")
+            credentials {
+                username = System.getenv("MAKECH_USERNAME")
+                password = System.getenv("MAKECH_PASSWORD")
+            }
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
         }
     }
 }
